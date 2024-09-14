@@ -1,0 +1,17 @@
+FROM node
+
+WORKDIR /node_app
+
+# Before copy, the file is scanned in order to know if the file was modified.
+#if package json has been modified, then, cache won't  be used for the stpes after (dependencies will be installed) 
+#if not, cache will be used to no install dependencies and the rest of the stpes until one change in the instruction is detected.
+#With this, e.g. we're not intalling dependencis every time a source file is modified.
+COPY package.json /node_app
+
+RUN npm install 
+
+COPY . /node_app
+
+EXPOSE 80
+
+CMD ["node", "server.js"] 
