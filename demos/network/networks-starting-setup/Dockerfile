@@ -11,5 +11,6 @@ COPY . .
 CMD ["node", "app.js"]
 
 # Used commands: 
-# Mongo Container: docker run -d --name mongodb mongo 
-# API Container: docker run --name favorites --rm -d -p 3000:3000 favorite-node
+# Network Creation: docker network create fav-network
+# Mongo Container: docker run -d --rm --name mongodb --network fav-network mongo 
+# API Container: docker run --name favorites --rm  --network fav-network -d -p 3000:3000 favorite-node:network
