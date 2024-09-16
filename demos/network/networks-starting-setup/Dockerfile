@@ -10,4 +10,6 @@ COPY . .
 
 CMD ["node", "app.js"]
 
-# Used command: docker run --name favorites --rm -d -p 3000:3000 favorite-node
+# Used commands: 
+# Mongo Container: docker run -d --name mongodb mongo 
+# API Container: docker run --name favorites --rm -d -p 3000:3000 favorite-node

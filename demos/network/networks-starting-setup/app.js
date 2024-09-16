@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios').default;
 const mongoose = require('mongoose');
-
+const mongoIp = "172.17.0.2"; // IP Address got from inspection of mongo container
 const Favorite = require('./models/favorite');
 
 const app = express();
@@ -68,7 +68,7 @@ app.get('/people', async (req, res) => {
 });
 
 mongoose.connect(
-  'mongodb://host.docker.internal:27017/swfavorites',
+  `mongodb://${mongoIp}:27017/swfavorites`,
   { useNewUrlParser: true },
   (err) => {
     if (err) {
